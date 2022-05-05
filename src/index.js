@@ -6,7 +6,7 @@ const userRoute = require("./users/users.route");
 const authRoute = require("./auth/auth.route");
 const tweetsRoute = require("./tweets/tweets.route");
 
-const port = process.env.PORT || 3005;
+const port = process.env.PORT || 3001;
 const app = express();
 connectDB();
 

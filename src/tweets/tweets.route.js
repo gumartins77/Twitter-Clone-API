@@ -2,7 +2,7 @@ const route = require("express").Router();
 const tweetController = require("./tweets.controller");
 const authMiddleware = require("../auth/auth.middleware");
 
-route.post("/", authMiddleware, tweetController.createTweetController);
+route.post("/create", authMiddleware, tweetController.createTweetController);
 route.get("/", authMiddleware, tweetController.findAllTweetesController);
 route.get("/search", authMiddleware, tweetController.searchTweetController);
 route.patch("/:id/like", authMiddleware, tweetController.likeTweetController);

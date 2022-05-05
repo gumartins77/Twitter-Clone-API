@@ -4,8 +4,16 @@ const createTweetService = (message, userId) => {
   return Tweet.create({ message, user: userId });
 };
 
-const findAllTweetesService = () => {
-  return Tweet.find().sort({ _id: -1 }).populate("user");
+const findAllTweetesService = (offset = 0, limit = 5) => {
+  return Tweet.find()
+    .sort({ _id: -1 })
+    .skip(offset)
+    .limit(limit)
+    .populate("user");
+};
+
+const countTweets = () => {
+  return Tweet.countDocuments();
 };
 
 const searchTweetService = (message) => {
@@ -69,6 +77,7 @@ const commentsService = (id, userId) => {
 module.exports = {
   createTweetService,
   findAllTweetesService,
+  countTweets,
   searchTweetService,
   likesService,
   retweetsService,
